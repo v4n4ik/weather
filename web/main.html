@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+    <input type="text" placeholder="Введите город" id = "location" value = "Орша">
+
+    <button id="show">Узнать погоду</button>
+
+    <div id="info">
+
+    </div>
+
+    <script src="jquery-3.7.1.js"></script>
+    <script type="text/javascript">
+        async function display_weather() {
+            let place = document.getElementById('location').value;
+
+            let res = await eel.get_weather(place)();
+            document.getElementById('info').innerHTML = res;
+        }
+
+        jQuery('#show').on('click', function() {
+            display_weather();
+        });
+    </script>
+</body>
+</html>
